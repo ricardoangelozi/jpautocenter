@@ -1,0 +1,206 @@
+/* CSS DESENVOLVIDO POR CLAUDIO ALVARENGA fev/2015 */
+
+/* CSS RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+:focus {
+	outline: 0;
+}
+
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* CSS RESET FIM */
+
+
+/* FONT-FACE */
+
+@font-face {
+	font-family: PoiretOne;
+	src: url('../fontes/PoiretOne-Regular.ttf') format('truetype');
+   }
+   
+@font-face {
+	font-family: VarelaRound;
+	src: url('../fontes/VarelaRound-Regular.ttf') format('truetype');
+   }
+@font-face {
+	font-family: QuattrocentoSans;
+	src: url('../fontes/QuattrocentoSans-Regular.ttf') format('truetype');
+   }
+@font-face {
+	font-family: QuattrocentoSansBold;
+	src: url('../fontes/QuattrocentoSans-Bold.ttf') format('truetype');
+   }
+   
+.table{
+	border:0px solid #ffffff;
+	font-family:QuattrocentoSans; 
+	float: left;
+	font-size: 14px;
+	text-align:right;
+	padding-right: 10px;
+	padding-top: 2px;
+	}
+
+/* CSS CIMA INICIO*/
+.fundoPreto{border: 0px solid #bd0;
+float: left;
+width: 100%;
+background-color: #2c2c2c;
+color: #fff;}
+
+.fundoPreto2{border: 0px solid #bd0;
+float: left;
+width: 100%;
+background-color: #666666;
+color: #fff;}
+
+.fundo3{border: 0px solid #bd0;
+float: left;
+width: 100%;
+background-color: #939393;
+color: #fff;}
+
+
+.fundoClaro{border: 0px solid #bd0;
+float: left;
+width: 100%;
+background-color: #dbdbdb;
+color: #fff;}
+
+
+.dado1{
+	border: 0px solid #bd0000;
+	float: left;
+	font-family: QuattrocentoSansBold;
+	font-size: 14px;
+	height: 30px;
+	vertical-align: middle;
+	color: #fff;
+	padding: 0px 10px;
+}
+
+.dado1 input{
+	color: #7c7c7c;
+	padding-left: 5px;
+}
+
+.dado1 select{
+	color: #7c7c7c;
+	padding-left: 5px;
+}
+
+.dado2{ 
+	border: 0px solid #bd0000;
+	float: right;
+	font-family: QuattrocentoSansBold;
+	font-size: 14px;
+	height: 30px;
+	vertical-align: middle;
+	color: #fff;
+	padding: 0px 10px;
+}
+
+.dadoCol{
+	font-family: QuattrocentoSansBold;
+font-size: 14px;
+height: 30px;
+vertical-align: middle;
+color: #666666;
+padding: 0px 10px;
+	}
+
+.main{
+	font-family:VarelaRound;
+	float: left;
+	width: 100%;
+	}
+
+
+.tabela1{
+	border:0px solid #333;
+	float:left;
+	width:100%;	
+	text-align:center;
+	}
+	
+.tabela1 td{
+	border:1px solid #bd0;
+	padding:10px;
+	}
+
+.titulo{
+font-size: 16px;
+font-weight: bold;
+width: 100%;
+background-color: #f86f05;
+float: left;
+padding: 10px 0px;
+color: #fff;
+}
+
+
+.linhaEspaco1{
+	background-color:#f86f05;
+	float:left;
+	width:100%;
+	height: 5px;
+	}
+
+/* CSS BOTÕES*/
+.btn01{
+	border: 0px solid #f86f05;
+	background-color: #f86f05;
+	color: #fff;
+	padding: 2px 10px;
+	cursor: pointer;
+	margin-left: 15px;
+	position: RELATIVE;
+	}
+	
+.btn01:hover{
+	border:0px solid #f86f05;
+	background-color:#2c2c2c;
+	}
+
+
+/* CSS DESENVOLVIDO POR CLAUDIO ALVARENGA fev/2015 */

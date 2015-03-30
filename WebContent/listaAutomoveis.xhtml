@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+	
+	
+	
+		
+		<h:form>
+		
+			<h:dataTable value="#{autoBean.automoveis}" var="automovel" border="1">
+				
+				<h:column>
+					<f:facet name="head"> ID </f:facet>
+						#{automovel.id}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="head"> MARCA </f:facet>
+					#{automovel.marca}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="head"> MODELO </f:facet>
+					#{automovel.modelo}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="head"> ANO FABRICAÇÃO </f:facet>
+					#{automovel.anoFabricao}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="head"> ANO MODELO </f:facet>
+					#{automovel.anoModelo}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="head"> OBSERVAÇÃO </f:facet>
+					#{automovel.observacao}
+				</h:column>
+				<h:column>
+					<f:facet name="head"> Ações </f:facet>
+					<h:commandLink action="#{autoBean.exclui(automovel)}" value="Excluir"></h:commandLink>
+				</h:column>
+			
+			</h:dataTable>
+			
+			
+		</h:form>
+		
+		
+	
+	
+</html>

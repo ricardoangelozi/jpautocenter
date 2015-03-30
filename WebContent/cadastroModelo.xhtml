@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel>Marca: </h:outputLabel>
+			 	<h:selectOneMenu id="comboMarca" value="#{modeloBean.marca}" converter="selectItensMenu" items="#{modeloBean.marcas}">
+					<f:selectItems value="#{modeloBean.marcas}" var="marcas"  itemLabel="#{marcas.marca}" itemValue="#{marcas}"/>
+				</h:selectOneMenu>  
+		</h:panelGrid>
+		
+		<h:panelGrid columns="3">
+			<h:outputLabel> Modelo: </h:outputLabel>
+			<h:inputText value="#{modeloBean.modelo.modelo}" />
+			<h:commandButton value="Salvar Modelo" action="#{modeloBean.salvarModelo(modeloBean.modelo)}"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
