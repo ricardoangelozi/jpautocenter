@@ -41,7 +41,7 @@ public class Veiculo implements Serializable{
 	@Column(name="DS_COR")
 	private String cor;
 	
-	@Column(name="NR_PLACA")
+	@Column(name="NR_PLACA", unique=true, nullable=false)
 	private String placa;
 	
 	@ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -3,7 +3,9 @@ package resources.dao;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
+import resources.entity.Modelo;
 import resources.entity.Veiculo;
 
 public class VeiculoDAO extends AbstractDAO<Veiculo> {
@@ -15,8 +17,18 @@ public class VeiculoDAO extends AbstractDAO<Veiculo> {
 
 	@Override
 	public List<Veiculo> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = em.createQuery("Select p from Veiculo p", Veiculo.class);
+		@SuppressWarnings("unchecked")
+		List<Veiculo> veiculo = q.getResultList();
+		return veiculo;
+	}
+	
+	public Veiculo listar(String placa) {
+		Query q = em.createQuery("from Veiculo where placa = :placa");
+		q.setParameter("placa", placa);
+		@SuppressWarnings("unchecked")
+		Veiculo veiculo = (Veiculo) q.getResultList().get(0);
+		return veiculo;
 	}
 
 	@Override

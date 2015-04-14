@@ -1,13 +1,22 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template.xhtml">
+	
+	<ui:define name="pageTitle">
+		<c:set var="mb" value="#{marcaBean}" />
+	</ui:define>
+	
+	<ui:define name="contents">
 	<h:form>
 		<h:panelGrid columns="3">
 			<h:outputLabel> Marca: </h:outputLabel>
-			<h:inputText value="#{marcaBean.marca.marca}" />
-			<h:commandButton value="Salvar Marca" action="#{marcaBean.salvarMarca(marcaBean.marca)}"/>
+			<h:inputText value="#{mb.marca.marca}" />
+			<h:commandButton value="Salvar Marca" action="#{mb.salvarMarca(marcaBean.marca)}"/>
 		</h:panelGrid>
 	</h:form>
-</h:body>
-</html>
+</ui:define>
+</ui:composition>

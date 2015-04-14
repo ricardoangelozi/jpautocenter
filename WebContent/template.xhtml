@@ -15,35 +15,22 @@
 </h:head>
 <h:body styleClass="main">
 	<ui:insert name="growl">
-		
-		<p:growl id="myMessage" showDetail="true" life="3000" />
+		<p:growl id="messages" showDetail="true" life="3000" />
 	</ui:insert>
 
 	<div id="container">
 
 		<div id="mainnav">
-			
-
+			<h:form>
+				<p:menu model="#{menuBean.model}"  />
+			</h:form>
 		</div>
-		<!-- final div mainnav -->
-
-
-
-
 		<div id="content" align="left">
 			<h2>
 				<ui:insert name="pageTitle" />
 			</h2>
 			<ui:insert name="contents" />
-			<!-- final div contents -->
 		</div>
-		<!-- final div content -->
-
-		<!--<div id="footer">
-			<ui:include src="/footer.xhtml" />
-		</div>
-		 final div footer -->
-
 	</div>
 	<!-- final div container -->
 </h:body>

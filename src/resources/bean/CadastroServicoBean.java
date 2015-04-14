@@ -5,8 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+
+import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
+import org.primefaces.model.menu.MenuModel;
 
 import resources.dao.CidadeDAO;
 import resources.dao.ClienteDAO;
@@ -14,6 +22,7 @@ import resources.dao.MarcaDAO;
 import resources.dao.ModeloDAO;
 import resources.dao.ParceirosDAO;
 import resources.dao.VeiculoDAO;
+import resources.entity.Automovel;
 import resources.entity.Cidade;
 import resources.entity.Cliente;
 import resources.entity.Marca;
@@ -37,9 +46,19 @@ public class CadastroServicoBean implements Serializable {
 	}
 	
 	private String dataAtual;
+	private String marca;
 	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
 	ParceirosDAO parceiroDao = new ParceirosDAO();
 	ModeloDAO modeloDao = new ModeloDAO();
+	MarcaDAO marcaDao = new MarcaDAO();
 	VeiculoDAO veiculoDao = new VeiculoDAO();
 	ClienteDAO clienteDao = new ClienteDAO();
 	CidadeDAO cidadeDao = new CidadeDAO();
@@ -53,9 +72,22 @@ public class CadastroServicoBean implements Serializable {
 	private List<Cidade> cidades;
 	private List<Modelo> modelos;
 	
+	private List<Veiculo> veiculos;
+	
+	public List<Veiculo> getVeiculos(){
+		if(this.veiculos == null){
+			return veiculoDao.listar();
+		}
+		return veiculos;
+	}
+	
 	public void cadastrar(){
 		veiculo.getCliente().setDtCadastro(new Date());
 		veiculoDao.incluir(veiculo);
+	}
+	
+	public void buscarCliente(){
+		veiculo = veiculoDao.listar(veiculo.getPlaca());
 	}
 	
 	public List<Cidade> getCidades(){
@@ -79,6 +111,17 @@ public class CadastroServicoBean implements Serializable {
 		
 		for(Parceiro p : parceiros){
 			itens.add(new SelectItem(p.getId(),p.getNomeParceiro()));
+		}
+		
+		return itens;
+	}
+	
+	public List<SelectItem> getMarcas(){
+		List<Marca> marca = marcaDao.listar();
+		List<SelectItem> itens = new ArrayList<SelectItem>();
+		
+		for(Marca m : marca){
+			itens.add(new SelectItem(m.getId(),m.getMarca()));
 		}
 		
 		return itens;
