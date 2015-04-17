@@ -24,11 +24,18 @@ public class VeiculoDAO extends AbstractDAO<Veiculo> {
 	}
 	
 	public Veiculo listar(String placa) {
-		Query q = em.createQuery("from Veiculo where placa = :placa");
-		q.setParameter("placa", placa);
-		@SuppressWarnings("unchecked")
-		Veiculo veiculo = (Veiculo) q.getResultList().get(0);
-		return veiculo;
+			Query q = em.createQuery("from Veiculo where placa = :placa");
+			q.setParameter("placa", placa.toUpperCase());
+			@SuppressWarnings("unchecked")
+			
+			int tamanho = q.getResultList().size();
+			Veiculo  veiculo = null;
+			
+			if(tamanho > 0){
+				veiculo = (Veiculo) q.getResultList().get(0);
+			} 
+		
+			return veiculo;
 	}
 
 	@Override

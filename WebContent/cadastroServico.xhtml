@@ -12,7 +12,7 @@
 	
 	<ui:define name="contents">
 		
-		<h:form>
+		<h:form id="form">
 			
 			<h:panelGrid columns="4" >
 				<h:outputLabel>Data:</h:outputLabel>
@@ -24,11 +24,11 @@
 			
 			<h:panelGrid columns="3" >
 				<h:outputLabel value="Placa: " id="placa"/>
-				<p:inputMask mask="" maxlength="8" value="#{mb.veiculo.placa}"/>
+				<p:inputMask mask="aaa-9999" maxlength="8" value="#{mb.veiculo.placa}"/>
 				<h:commandButton value="buscar" action="#{mb.buscarCliente()}" />
 			</h:panelGrid>
 			
-			 <h:panelGrid columns="10" >
+			 <h:panelGrid columns="10" rendered="#{mb.exibir}" >
 				<h:outputLabel value="Nome: "/>
 				<h:inputText value="#{mb.veiculo.cliente.nome}"/>
 			
@@ -48,9 +48,7 @@
                 	 <f:selectItem itemLabel="FEMININO" itemValue="false" />
 				</h:selectOneMenu> 
 				
-			</h:panelGrid>
 			
-			<h:panelGrid columns="6">
 				<h:outputLabel value="Endereço: "/>
 				<h:inputText value="#{mb.veiculo.cliente.endereco.endereco}"></h:inputText>
 				
@@ -66,9 +64,7 @@
 				 	<f:selectItems value="#{mb.cidades}" var="cidades"  itemLabel="#{cidades.dsCidade}" itemValue="#{cidades}"/>
 				</h:selectOneMenu>  
 				
-			</h:panelGrid> 
 			
-			<h:panelGrid columns="6" >
 			
 				<h:outputLabel value="Marca "/>
 				<h:selectOneMenu value="#{mb.marca}">
@@ -97,8 +93,9 @@
 			</h:panelGrid>
 			
 			<h:commandButton value="Cadastrar" action="#{mb.cadastrar}"/>
+			</h:panelGrid>
 			
-			<h:panelGrid>
+			<!-- <h:panelGrid>
 				<h:dataTable value="#{mb.veiculos}" var="veiculo" border="1">
 				
 				<h:column>
@@ -131,9 +128,9 @@
 					<h:commandLink action="#{autoBean.exclui(automovel)}" value="Excluir"></h:commandLink>
 				</h:column>
 			
-			</h:dataTable>
+			</h:dataTable>  -->
 			
-			</h:panelGrid>
+			
 			
 			
 		</h:form>

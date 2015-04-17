@@ -47,15 +47,8 @@ public class CadastroServicoBean implements Serializable {
 	
 	private String dataAtual;
 	private String marca;
+	private Boolean exibir = false;
 	
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-
 	ParceirosDAO parceiroDao = new ParceirosDAO();
 	ModeloDAO modeloDao = new ModeloDAO();
 	MarcaDAO marcaDao = new MarcaDAO();
@@ -87,7 +80,14 @@ public class CadastroServicoBean implements Serializable {
 	}
 	
 	public void buscarCliente(){
-		veiculo = veiculoDao.listar(veiculo.getPlaca());
+		if(veiculo.getPlaca() != "") {
+			veiculo = veiculoDao.listar(veiculo.getPlaca());
+			this.exibir = true;
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+			FacesMessage.SEVERITY_WARN,null,"Preencha o Campo Placa"));
+		}
+		
 	}
 	
 	public List<Cidade> getCidades(){
@@ -177,5 +177,21 @@ public class CadastroServicoBean implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public Boolean getExibir() {
+		return exibir;
+	}
+
+	public void setExibir(Boolean exibir) {
+		this.exibir = exibir;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 }
