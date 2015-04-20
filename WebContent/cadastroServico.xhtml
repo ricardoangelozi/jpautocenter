@@ -33,10 +33,12 @@
 				<h:inputText value="#{mb.veiculo.cliente.nome}"/>
 			
 				<h:outputLabel value="Fixo: "/>
-				<h:inputText value="#{mb.veiculo.cliente.telFixo}"></h:inputText>
+				<p:inputMask mask="(99)9999-9999" maxlength="12" value="#{mb.veiculo.cliente.telFixo}"/>
+				
 				
 				<h:outputLabel value="Celular: "/>
-				<h:inputText value="#{mb.veiculo.cliente.telCel}"></h:inputText>
+				<p:inputMask mask="(99)99999-9999" maxlength="12" value="#{mb.veiculo.cliente.telCel}"/>
+				
 				
 				<h:outputLabel value="Email: "/>
 				<h:inputText value="#{mb.veiculo.cliente.email}"></h:inputText>
@@ -53,10 +55,13 @@
 				<h:inputText value="#{mb.veiculo.cliente.endereco.endereco}"></h:inputText>
 				
 				<h:outputLabel value="Nº: "/>
-				<h:inputText value="#{mb.veiculo.cliente.endereco.numero}"></h:inputText>
+				
+				<h:inputText value="#{mb.veiculo.cliente.endereco.numero}" maxlength="5"/>
 				
 				<h:outputLabel value="CEP: "/>
-				<h:inputText value="#{mb.veiculo.cliente.endereco.cep}"></h:inputText>
+				<p:inputMask mask="99999-999" maxlength="9" value="#{mb.veiculo.cliente.endereco.cep}"/>
+				
+				
 				
 				<h:outputLabel value="Cidade: "/>
 				
@@ -67,9 +72,8 @@
 			
 			
 				<h:outputLabel value="Marca "/>
-				<h:selectOneMenu value="#{mb.marca}">
-					<f:selectItem itemLabel="SELECIONE..." itemValue="" noSelectionOption="true" />
-					<f:selectItems value="#{mb.marcas}" />
+				<h:selectOneMenu  id="comboMarca" value="#{mb.veiculo.marca}" items="#{mb.marcas}" converter="selectItensMenu" >
+					<f:selectItems  value="#{mb.marcas}" var="marcas" itemLabel="#{marcas.marca}" itemValue="#{marcas}" />
 				</h:selectOneMenu>
 			
 				<h:outputLabel value="Modelo: "/>
@@ -90,48 +94,8 @@
 					<f:selectItems value="#{mb.anos}"/>
 				</h:selectOneMenu>
 				
+				<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" />	
 			</h:panelGrid>
-			
-			<h:commandButton value="Cadastrar" action="#{mb.cadastrar}"/>
-			
-			
-			<!-- <h:panelGrid>
-				<h:dataTable value="#{mb.veiculos}" var="veiculo" border="1">
-				
-				<h:column>
-					<f:facet name="head"> PLACA </f:facet>
-						#{veiculo.placa}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="head"> NOME </f:facet>
-					#{veiculo.cliente.nome}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="head"> TELEFONE </f:facet>
-					#{veiculo.cliente.telFixo}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="head"> Celular </f:facet>
-					#{veiculo.cliente.telCel}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="head"> EMAIL </f:facet>
-					#{veiculo.cliente.email}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="head"> Ações </f:facet>
-					<h:commandLink action="#{autoBean.exclui(automovel)}" value="Excluir"></h:commandLink>
-				</h:column>
-			
-			</h:dataTable>  -->
-			
-			
-			
 			
 		</h:form>
 		

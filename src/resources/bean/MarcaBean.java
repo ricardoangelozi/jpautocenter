@@ -3,11 +3,13 @@ package resources.bean;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import resources.dao.MarcaDAO;
 import resources.entity.Marca;
 
 @ManagedBean(name = "marcaBean")
+@ViewScoped
 public class MarcaBean implements Serializable{
 
 	/**

@@ -52,6 +52,10 @@ public class Veiculo implements Serializable{
 	@JoinColumn(name="MODELO_ID")
 	private Modelo modelo = new Modelo();
 	
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn(name="MARCA_ID")
+	private Marca marca = new Marca();
+	
 	public String getAnoFabricao() {
 		return anoFabricao;
 	}
@@ -60,6 +64,12 @@ public class Veiculo implements Serializable{
 	}
 	public String getAnoModelo() {
 		return anoModelo;
+	}
+	public Marca getMarca() {
+		return marca;
+	}
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 	public void setAnoModelo(String anoModelo) {
 		this.anoModelo = anoModelo;

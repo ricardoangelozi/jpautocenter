@@ -29,12 +29,15 @@ public class VeiculoDAO extends AbstractDAO<Veiculo> {
 			@SuppressWarnings("unchecked")
 			
 			int tamanho = q.getResultList().size();
-			Veiculo  veiculo = null;
+			
+			int teste = q.getFirstResult();
+			
+			Veiculo  veiculo = new Veiculo();
 			
 			if(tamanho > 0){
 				veiculo = (Veiculo) q.getResultList().get(0);
 			} 
-		
+			
 			return veiculo;
 	}
 

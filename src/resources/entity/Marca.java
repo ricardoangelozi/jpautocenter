@@ -49,32 +49,4 @@ public class Marca implements Serializable {
 		this.marca = marca;
 	}
 
-//	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="marca", targetEntity = Modelo.class, fetch = FetchType.LAZY)
-//	private List<Modelo> modelos;
-//	
-//	public void addItens(Modelo modelos){
-//		modelos.setMarca(this);
-//		this.modelos.add(modelos);
-//	}
-//		
-//		public Marca() {
-//		 this(0L);	
-//		}
-//	
-//		public Marca(Long id){
-//			this.id = id;
-//			this.modelos = new LinkedList<Modelo>();
-//		}
-	
-//	public List<Modelo> getModelos() {
-//		return modelos;
-//	}
-//
-//	public void setModelos(List<Modelo> modelos) {
-//		this.modelos = modelos;
-//	}
-	
-	
-
 }

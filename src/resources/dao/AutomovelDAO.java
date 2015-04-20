@@ -32,10 +32,10 @@ public class AutomovelDAO extends AbstractDAO<Automovel> {
 
 	@Override
 	public void excluir(Automovel objeto) {
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		em.remove(objeto);
-		tx.commit();
+//		EntityTransaction tx = em.getTransaction();
+//		tx.begin();
+//		em.remove(objeto);
+//		tx.commit();
 //		em.close();
 		
 	}

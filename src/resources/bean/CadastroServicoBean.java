@@ -5,26 +5,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
-
 import resources.dao.CidadeDAO;
-import resources.dao.ClienteDAO;
 import resources.dao.MarcaDAO;
 import resources.dao.ModeloDAO;
 import resources.dao.ParceirosDAO;
 import resources.dao.VeiculoDAO;
-import resources.entity.Automovel;
 import resources.entity.Cidade;
-import resources.entity.Cliente;
 import resources.entity.Marca;
 import resources.entity.Modelo;
 import resources.entity.Parceiro;
@@ -32,6 +24,7 @@ import resources.entity.Veiculo;
 import resources.utils.Utils;
 
 @ManagedBean(name = "cadastroServicoBean")
+@ViewScoped
 public class CadastroServicoBean implements Serializable {
 
 	/**
@@ -39,44 +32,48 @@ public class CadastroServicoBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 4993049019194073795L;
 
-	
-	
 	public CadastroServicoBean() {
 		
 	}
 	
 	private String dataAtual;
-	private String marca;
 	private Boolean exibir = false;
 	
 	ParceirosDAO parceiroDao = new ParceirosDAO();
 	ModeloDAO modeloDao = new ModeloDAO();
 	MarcaDAO marcaDao = new MarcaDAO();
 	VeiculoDAO veiculoDao = new VeiculoDAO();
-	ClienteDAO clienteDao = new ClienteDAO();
 	CidadeDAO cidadeDao = new CidadeDAO();
 	
-	
-	private Parceiro parceiro = new Parceiro();
 	private Veiculo veiculo = new Veiculo();
-	private Cliente cliente = new Cliente();
-	
 	
 	private List<Cidade> cidades;
 	private List<Modelo> modelos;
-	
-	private List<Veiculo> veiculos;
-	
-	public List<Veiculo> getVeiculos(){
-		if(this.veiculos == null){
-			return veiculoDao.listar();
-		}
-		return veiculos;
-	}
+	private List<Marca> marcas;
 	
 	public void cadastrar(){
-		veiculo.getCliente().setDtCadastro(new Date());
-		veiculoDao.incluir(veiculo);
+		
+		if(validacoesCampos()){
+			veiculo.getCliente().setDtCadastro(new Date());
+			veiculo.setPlaca(veiculo.getPlaca().toUpperCase());
+			veiculoDao.incluir(veiculo);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+					FacesMessage.SEVERITY_WARN,null,"Preencha os Campos"));
+		}
+	}
+	
+	public void carregarModelo(){
+		System.out.println("teste");
+	}
+	
+	
+	
+	public void mensagens(String campo){
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+				FacesMessage.SEVERITY_WARN,null, "Campo Obrigatorio: " + campo));
+	
 	}
 	
 	public void buscarCliente(){
@@ -98,13 +95,6 @@ public class CadastroServicoBean implements Serializable {
 		
 	}
 	
-	public List<Modelo> getModelos(){
-		if(this.modelos == null){
-			return modeloDao.listar();
-		}
-		return modelos;
-	}
-	
 	public List<SelectItem> getParceiros(){
 		List<Parceiro> parceiros = parceiroDao.listar();
 		List<SelectItem> itens = new ArrayList<SelectItem>(parceiros.size());
@@ -116,15 +106,19 @@ public class CadastroServicoBean implements Serializable {
 		return itens;
 	}
 	
-	public List<SelectItem> getMarcas(){
-		List<Marca> marca = marcaDao.listar();
-		List<SelectItem> itens = new ArrayList<SelectItem>();
-		
-		for(Marca m : marca){
-			itens.add(new SelectItem(m.getId(),m.getMarca()));
+	
+	public List<Modelo> getModelos(){
+		if(this.modelos == null){
+			return modeloDao.listar();
 		}
-		
-		return itens;
+		return modelos;
+	}
+	
+	public List<Marca> getMarcas(){
+		if(this.marcas == null){
+			return marcaDao.listar();
+		}
+		return marcas;
 	}
 	
 	public List<SelectItem> getAnos(){
@@ -146,15 +140,69 @@ public class CadastroServicoBean implements Serializable {
 //		return itens;
 //	}
 	
+public Boolean validacoesCampos(){
+		
+		Boolean valida = true;
+		
+		if("".equals(veiculo.getPlaca())){
+			valida = false; 
+			mensagens("Placa");
+		}
+		
+		if("".equals(veiculo.getCliente().getNome())){
+			valida = false; 
+			mensagens("Nome");
+		}
+		
+		if("".equals(veiculo.getCliente().getTelFixo())){
+			valida = false;
+			mensagens("Telefone Fixo");
+		}
+		
+		if("".equals(veiculo.getCliente().getTelCel())){
+			valida = false;
+			mensagens("Celular");
+		}
+		
+		if("".equals(veiculo.getCliente().getEndereco().getEndereco())){
+			valida = false;
+			mensagens("Rua");
+		}
+		
+		if("".equals(veiculo.getCliente().getEndereco().getNumero())){
+			valida = false;
+			mensagens("Nº");
+		}
+		
+		if("".equals(veiculo.getCliente().getEndereco().getCep())){
+			valida = false;
+			mensagens("CEP");
+		}
+		
+		if("".equals(veiculo.getCliente().getEndereco().getCidade())){
+			valida = false;
+			mensagens("Cidade");
+		}
+		
+		if(veiculo.getModelo().getId() == 0){
+			valida = false;
+			mensagens("Ano Fabricação");
+		}
+		
+		if("".equals(veiculo.getAnoFabricao())){
+			valida = false;
+			mensagens("Ano Fabricação");
+		}
+		
+		if("".equals(veiculo.getAnoModelo())){
+			valida = false;
+			mensagens("Ano Modelo");
+		}
+		
+		return valida;
+	}
 	
-	public Parceiro getParceiro() {
-		return parceiro;
-	}
-
-	public void setParceiro(Parceiro parceiro) {
-		this.parceiro = parceiro;
-	}
-
+	
 	public String getDataAtual() {
 		return dataAtual = Utils.converteData();
 	}
@@ -171,27 +219,11 @@ public class CadastroServicoBean implements Serializable {
 		this.veiculo = veiculo;
 	}
 	
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	
 	public Boolean getExibir() {
 		return exibir;
 	}
 
 	public void setExibir(Boolean exibir) {
 		this.exibir = exibir;
-	}
-
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 }

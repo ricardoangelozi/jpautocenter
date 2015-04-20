@@ -22,6 +22,14 @@ public class ModeloDAO extends AbstractDAO<Modelo> {
 		List<Modelo> modelo = q.getResultList();
 		return modelo;
 	}
+	
+	public List<Modelo> listarModelos(Long id) {
+		Query q = em.createQuery("from Modelo where MARCA_ID = :marcaid");
+		q.setParameter("MARCA_ID", id);
+		@SuppressWarnings("unchecked")
+		List<Modelo> modelo = q.getResultList();
+		return modelo;
+	}
 
 	@Override
 	public void incluir(Modelo objeto) {
