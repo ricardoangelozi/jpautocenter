@@ -1,0 +1,30 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml">
+	
+	<ui:define name="pageTitle">
+		<c:set var="mb" value="#{pecaBean}" />
+	</ui:define>
+	
+	<ui:define name="contents">
+	<h:form>
+	
+		<h:panelGrid columns="2">
+			<h:outputLabel>Categoria: </h:outputLabel>
+			 	<h:selectOneMenu id="comboCategoria" value="#{mb.categoria}" converter="selectItensMenu" items="#{mb.pecasCategorias}">
+					<f:selectItems value="#{mb.pecasCategorias}" var="categorias"  itemLabel="#{categorias.descricao}" itemValue="#{categorias}"/>
+				</h:selectOneMenu>  
+		</h:panelGrid>
+	
+		<h:panelGrid columns="3">
+			<h:outputLabel> Peças: </h:outputLabel>
+			<h:inputText value="#{mb.peca.descricao}" />
+			<h:commandButton value="Salvar Peca" action="#{mb.salvarPeca(pecaBean.peca)}"/>
+		</h:panelGrid>
+	</h:form>
+</ui:define>
+</ui:composition>

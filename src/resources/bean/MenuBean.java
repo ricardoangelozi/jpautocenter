@@ -44,6 +44,16 @@ public class MenuBean implements Serializable{
         item.setIcon("ui-icon-home");
         firstSubmenu.addElement(item);
         
+        item = new DefaultMenuItem("Categoria");
+        item.setUrl("/cadastroPecaCategoria.faces");
+        item.setIcon("ui-icon-home");
+        firstSubmenu.addElement(item);
+        
+        item = new DefaultMenuItem("Pecas");
+        item.setUrl("/cadastroPeca.faces");
+        item.setIcon("ui-icon-home");
+        firstSubmenu.addElement(item);
+        
         model.addElement(firstSubmenu);
          
         //Second submenu

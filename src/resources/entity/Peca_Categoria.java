@@ -12,9 +12,9 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "TB_SERVICO")
-@SequenceGenerator(name = "SERVICO_SEQUENCE", sequenceName="SERVICO_SEQUENCE", allocationSize = 1, initialValue = 0)
-public class Servico implements Serializable{
+@Table(name = "TB_PECA_CATEGORIA")
+@SequenceGenerator(name = "PECA_CATEGORIA_SEQUENCE", sequenceName= "PECA_CATEGORIA_SEQUENCE", allocationSize = 1, initialValue = 0)
+public class Peca_Categoria implements Serializable {
 
 	/**
 	 * 
@@ -22,11 +22,11 @@ public class Servico implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SERVICO_SEQUENCE")
-	@Column(name = "PK_SERVICO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "PECA_CATEGORIA_SEQUENCE")
+	@Column(name = "PK_CATEGORIA")
 	private Long id;
 	
-	@Column(name = "DS_SERVICO")
+	@Column(name = "DS_PECA_CATEGORIA")
 	private String descricao;
 
 	public Long getId() {
@@ -45,4 +45,8 @@ public class Servico implements Serializable{
 		this.descricao = descricao;
 	}
 	
+	
+	
+	
+
 }
