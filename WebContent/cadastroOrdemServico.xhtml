@@ -96,6 +96,12 @@
 			
 			<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" styleClass="btn01"/>
 			
+			<p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /> 
+			
+			<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" closeOnEscape="true" hideEffect="bounce" height="200">
+    			<h:outputText value="This dialog has nice effects." />
+			</p:dialog>
+			
 		</h:form>
 		
 		
