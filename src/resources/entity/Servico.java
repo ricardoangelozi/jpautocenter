@@ -28,6 +28,9 @@ public class Servico implements Serializable{
 	
 	@Column(name = "DS_SERVICO")
 	private String descricao;
+	
+	@Column(name = "VL_UNITARIO")
+	private Double vlUnitario;
 
 	public Long getId() {
 		return id;
@@ -44,5 +47,15 @@ public class Servico implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Double getVlUnitario() {
+		return vlUnitario;
+	}
+
+	public void setVlUnitario(Double vlUnitario) {
+		this.vlUnitario = vlUnitario;
+	}
+	
+	
 	
 }

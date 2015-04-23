@@ -13,9 +13,9 @@
 	<ui:define name="contents">
 	<h:form>
 		<h:panelGrid columns="3">
-			<h:outputLabel> Categoria: </h:outputLabel>
-			<h:inputText value="#{mb.categoria.descricao}" />
-			<h:commandButton value="Salvar Categoria" action="#{mb.salvarCategoria(pecaCategoria.categoria)}"/>
+			<h:outputLabel styleClass="campo1"> Categoria: </h:outputLabel>
+			<h:inputText styleClass="inpt01" value="#{mb.categoria.descricao}" />
+			<h:commandButton value="cadastrar" action="#{mb.salvarCategoria(pecaCategoria.categoria)}" styleClass="btn01"/>
 		</h:panelGrid>
 	</h:form>
 </ui:define>

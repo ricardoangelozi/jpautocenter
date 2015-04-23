@@ -14,16 +14,16 @@
 	<h:form>
 	
 		<h:panelGrid columns="2">
-			<h:outputLabel>Categoria: </h:outputLabel>
-			 	<h:selectOneMenu id="comboCategoria" value="#{mb.categoria}" converter="selectItensMenu" items="#{mb.pecasCategorias}">
+			<h:outputLabel styleClass="campo1">Categoria: </h:outputLabel>
+			 	<h:selectOneMenu id="comboCategoria" value="#{mb.categoria}" converter="selectItensMenu" items="#{mb.pecasCategorias}" styleClass="slct">
 					<f:selectItems value="#{mb.pecasCategorias}" var="categorias"  itemLabel="#{categorias.descricao}" itemValue="#{categorias}"/>
 				</h:selectOneMenu>  
 		</h:panelGrid>
 	
 		<h:panelGrid columns="3">
-			<h:outputLabel> Peças: </h:outputLabel>
-			<h:inputText value="#{mb.peca.descricao}" />
-			<h:commandButton value="Salvar Peca" action="#{mb.salvarPeca(pecaBean.peca)}"/>
+			<h:outputLabel styleClass="campo1"> Peças: </h:outputLabel>
+			<h:inputText styleClass="inpt01" value="#{mb.peca.descricao}" />
+			<h:commandButton value="CADASTRAR" action="#{mb.salvarPeca(pecaBean.peca)}" styleClass="btn01"/>
 		</h:panelGrid>
 	</h:form>
 </ui:define>

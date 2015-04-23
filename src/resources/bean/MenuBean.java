@@ -61,13 +61,23 @@ public class MenuBean implements Serializable{
         model.addElement(segundoSubmenu);
 
         //Second submenu
-        DefaultSubMenu terceiroSubmenu = new DefaultSubMenu("Cadastro Serviços");
+        DefaultSubMenu terceiroSubmenu = new DefaultSubMenu("Ordem de Serviço");
  
-        item = new DefaultMenuItem("Serviço");
-        item.setUrl("/cadastroServico.faces");
+        item = new DefaultMenuItem("Ordem");
+        item.setUrl("/cadastroOrdemServico.faces");
         item.setIcon("ui-icon-disk");
         terceiroSubmenu.addElement(item);
         model.addElement(terceiroSubmenu);
+        
+        
+        DefaultSubMenu quartoSubmenu = new DefaultSubMenu("Cadastro Serviços");
+        
+        item = new DefaultMenuItem("Serviço");
+        item.setUrl("/cadastroServico.faces");
+        item.setIcon("ui-icon-home");
+        quartoSubmenu.addElement(item);
+        
+        model.addElement(quartoSubmenu);
     }
  
     public MenuModel getModel() {
