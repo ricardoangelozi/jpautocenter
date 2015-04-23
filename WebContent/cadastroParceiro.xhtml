@@ -13,9 +13,9 @@
 	<ui:define name="contents">
 	<h:form>
 		<h:panelGrid columns="3">
-			<h:outputLabel> Parceiro: </h:outputLabel>
-			<h:inputText value="#{mb.parceiro.nomeParceiro}" />
-			<h:commandButton value="Salvar Parceiro" action="#{mb.salvarParceiro(mb.parceiro)}"/>
+			<h:outputLabel styleClass="campo1" value="Parceiro:" />
+			<h:inputText styleClass="inpt01" value="#{mb.parceiro.nomeParceiro}" />
+			<h:commandButton value="Salvar Parceiro" action="#{mb.salvarParceiro(mb.parceiro)}" styleClass="btn01"/>
 		</h:panelGrid>
 	</h:form>
 </ui:define>

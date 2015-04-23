@@ -5,17 +5,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/template.xhtml">
-	
+
+
 	<ui:define name="pageTitle">
 		<c:set var="mb" value="#{marcaBean}" />
 	</ui:define>
 	
 	<ui:define name="contents">
 	<h:form>
-		<h:panelGrid columns="3">
-			<h:outputLabel> Marca: </h:outputLabel>
-			<h:inputText value="#{mb.marca.marca}" />
-			<h:commandButton value="Salvar Marca" action="#{mb.salvarMarca(marcaBean.marca)}"/>
+		<h:panelGrid columns="3">			
+			<h:outputLabel styleClass="campo1" value=" Marca:" />
+			<h:inputText styleClass="inpt01" value="#{mb.marca.marca}" />
+			<h:commandButton value="Salvar Marca" action="#{mb.salvarMarca(marcaBean.marca)}" styleClass="btn01" />
 		</h:panelGrid>
 	</h:form>
 </ui:define>

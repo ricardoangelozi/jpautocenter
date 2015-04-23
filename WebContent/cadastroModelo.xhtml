@@ -13,16 +13,16 @@
 	<ui:define name="contents">
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel>Marca: </h:outputLabel>
-			 	<h:selectOneMenu id="comboMarca" value="#{mb.marca}" converter="selectItensMenu" items="#{mb.marcas}">
+			<h:outputLabel styleClass="campo1" value="Marca:" />
+				 	<h:selectOneMenu styleClass="slct" id="comboMarca" value="#{mb.marca}" converter="selectItensMenu" items="#{mb.marcas}">
 					<f:selectItems value="#{mb.marcas}" var="marcas"  itemLabel="#{marcas.marca}" itemValue="#{marcas}"/>
 				</h:selectOneMenu>  
 		</h:panelGrid>
 		
 		<h:panelGrid columns="3">
-			<h:outputLabel> Modelo: </h:outputLabel>
-			<h:inputText value="#{mb.modelo.modelo}" />
-			<h:commandButton value="Salvar Modelo" action="#{mb.salvarModelo(mb.modelo)}"/>
+			<h:outputLabel styleClass="campo1" value="Modelo:" />
+			<h:inputText styleClass="inpt01" value="#{mb.modelo.modelo}" />
+			<h:commandButton value="Salvar Modelo" action="#{mb.salvarModelo(mb.modelo)}" styleClass="btn01"/>
 		</h:panelGrid>
 	</h:form>
 </ui:define>

@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui" 
 	template="/template/template.xhtml">
 	
+				
 	<ui:define name="pageTitle">
 		<c:set var="mb" value="#{cadastroServicoBean}" />
 	</ui:define>
@@ -14,36 +15,36 @@
 		
 		<h:form id="form">
 			
-			<h:panelGrid columns="4" >
-				<h:outputLabel>Data:</h:outputLabel>
-				<h:outputLabel value="#{mb.dataAtual}"/>
-				
-				<h:outputLabel >Usuario:</h:outputLabel>
-				<h:outputLabel >Ricardo Leite Angelozi</h:outputLabel>
+			<h:panelGrid columns="2" styleClass="grid1">
+				<h:outputLabel styleClass="campo1" value="Data Atual: ">
+				<span>#{mb.dataAtual}</span>
+				</h:outputLabel>
+				<h:outputLabel styleClass="campo1" value="Usuário: ">
+				<span>Ricardo Leite Angelozi</span>
+				</h:outputLabel>
 			</h:panelGrid>
 			
-			<h:panelGrid columns="3" >
-				<h:outputLabel value="Placa: " id="placa"/>
-				<p:inputMask mask="aaa-9999" maxlength="8" value="#{mb.veiculo.placa}"/>
-				<h:commandButton value="buscar" action="#{mb.buscarCliente()}" />
+			<h:panelGrid columns="3">
+				<h:outputLabel styleClass="campo1" value="Placa: " id="placa"/>
+				<p:inputMask styleClass="campo2P" mask="aaa-9999" maxlength="8" value="#{mb.veiculo.placa}"/>
+				<h:commandButton value="buscar" action="#{mb.buscarCliente()}" styleClass="btn01" />
 			</h:panelGrid>
 			
 			 <h:panelGrid columns="10" rendered="#{mb.exibir}" >
-				<h:outputLabel value="Nome: "/>
+				<h:outputLabel styleClass="campo1" value="Nome:"/>
 				<h:inputText value="#{mb.veiculo.cliente.nome}"/>
 			
-				<h:outputLabel value="Fixo: "/>
+				<h:outputLabel styleClass="campo1" value="Fixo:" />
 				<p:inputMask mask="(99)9999-9999" maxlength="12" value="#{mb.veiculo.cliente.telFixo}"/>
 				
 				
-				<h:outputLabel value="Celular: "/>
+				<h:outputLabel styleClass="campo1" value="Celular: "/>
 				<p:inputMask mask="(99)99999-9999" maxlength="12" value="#{mb.veiculo.cliente.telCel}"/>
 				
-				
-				<h:outputLabel value="Email: "/>
+				<h:outputLabel styleClass="campo1" value="Email: "/>
 				<h:inputText value="#{mb.veiculo.cliente.email}"></h:inputText>
 				
-				<h:outputLabel value="Sexo: "/>
+				<h:outputLabel styleClass="campo1" value="Sexo: "/>
 				<h:selectOneMenu id="sexo" value="#{mb.veiculo.cliente.sexo}"> 
 					 <f:selectItem itemLabel="SELECIONE..." itemValue="" noSelectionOption="true" />
                 	 <f:selectItem itemLabel="MASCULINO" itemValue="true" />
@@ -51,19 +52,16 @@
 				</h:selectOneMenu> 
 				
 			
-				<h:outputLabel value="Endereço: "/>
+				<h:outputLabel styleClass="campo1" value="Endereço: "/>
 				<h:inputText value="#{mb.veiculo.cliente.endereco.endereco}"></h:inputText>
 				
-				<h:outputLabel value="Nº: "/>
+				<h:outputLabel styleClass="campo1" value="Nº: "/>
+				<h:inputText value="#{mb.veiculo.cliente.endereco.numero}"></h:inputText>
 				
-				<h:inputText value="#{mb.veiculo.cliente.endereco.numero}" maxlength="5"/>
-				
-				<h:outputLabel value="CEP: "/>
+				<h:outputLabel styleClass="campo1" value="CEP: "/>
 				<p:inputMask mask="99999-999" maxlength="9" value="#{mb.veiculo.cliente.endereco.cep}"/>
 				
-				
-				
-				<h:outputLabel value="Cidade: "/>
+				<h:outputLabel styleClass="campo1" value="Cidade: "/>
 				
 				 <h:selectOneMenu id="comboCidade" value="#{mb.veiculo.cliente.endereco.cidade}"  items="#{mb.cidades}" converter="selectItensMenu" >
 				 	<f:selectItems value="#{mb.cidades}" var="cidades"  itemLabel="#{cidades.dsCidade}" itemValue="#{cidades}"/>
@@ -71,34 +69,32 @@
 				
 			
 			
-				<h:outputLabel value="Marca "/>
+				<h:outputLabel styleClass="campo1" value="Marca "/>
 				<h:selectOneMenu  id="comboMarca" value="#{mb.veiculo.marca}" items="#{mb.marcas}" converter="selectItensMenu" >
 					<f:selectItems  value="#{mb.marcas}" var="marcas" itemLabel="#{marcas.marca}" itemValue="#{marcas}" />
 				</h:selectOneMenu>
 			
-				<h:outputLabel value="Modelo: "/>
+				<h:outputLabel styleClass="campo1" value="Modelo: "/>
 				<h:selectOneMenu id="comboModelo" value="#{mb.veiculo.modelo}" items="#{mb.modelos}" converter="selectItensMenu" >
 					<f:selectItems value="#{mb.modelos}" var="modelos" itemLabel="#{modelos.modelo}" itemValue="#{modelos}"/>
 				</h:selectOneMenu>
 				
-				<h:outputLabel value="Ano Fabricação: "/>
+				<h:outputLabel styleClass="campo1" value="Ano Fabricação: "/>
 				<h:selectOneMenu value="#{mb.veiculo.anoFabricao}">
 					<f:selectItem itemLabel="SELECIONE..." itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{mb.anos}"/>
 				</h:selectOneMenu>
 				
 				
-				<h:outputLabel value="Ano Modelo: "/>
+				<h:outputLabel styleClass="campo1" value="Ano Modelo: "/>
 				<h:selectOneMenu value="#{mb.veiculo.anoModelo}">
 					<f:selectItem itemLabel="SELECIONE..." itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{mb.anos}"/>
 				</h:selectOneMenu>
 				
-					
 			</h:panelGrid>
-			<h:panelGrid>
-				<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" />
-			</h:panelGrid>
+			
+			<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" styleClass="btn01"/>
 			
 		</h:form>
 		
