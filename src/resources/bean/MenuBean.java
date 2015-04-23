@@ -26,44 +26,48 @@ public class MenuBean implements Serializable{
         model = new DefaultMenuModel();
          
         //First submenu
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Parametrização");
+        DefaultSubMenu primeiroSubmenu = new DefaultSubMenu("Parametrização");
          
         DefaultMenuItem item = new DefaultMenuItem("Marca");
         item.setUrl("/cadastroMarca.faces");
         item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
+        primeiroSubmenu.addElement(item);
         
         
         item = new DefaultMenuItem("Modelo");
         item.setUrl("/cadastroModelo.faces");
         item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
+        primeiroSubmenu.addElement(item);
         
         item = new DefaultMenuItem("Parceiros");
         item.setUrl("/cadastroParceiro.faces");
         item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
+        primeiroSubmenu.addElement(item);
+        
+        model.addElement(primeiroSubmenu);
+         
+        DefaultSubMenu segundoSubmenu = new DefaultSubMenu("Cadastro Peças");
         
         item = new DefaultMenuItem("Categoria");
         item.setUrl("/cadastroPecaCategoria.faces");
         item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
+        segundoSubmenu.addElement(item);
         
         item = new DefaultMenuItem("Pecas");
         item.setUrl("/cadastroPeca.faces");
         item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
+        segundoSubmenu.addElement(item);
         
-        model.addElement(firstSubmenu);
-         
+        model.addElement(segundoSubmenu);
+
         //Second submenu
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Cadastro Serviços");
+        DefaultSubMenu terceiroSubmenu = new DefaultSubMenu("Cadastro Serviços");
  
         item = new DefaultMenuItem("Serviço");
         item.setUrl("/cadastroServico.faces");
         item.setIcon("ui-icon-disk");
-        secondSubmenu.addElement(item);
-        model.addElement(secondSubmenu);
+        terceiroSubmenu.addElement(item);
+        model.addElement(terceiroSubmenu);
     }
  
     public MenuModel getModel() {
