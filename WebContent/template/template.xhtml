@@ -8,7 +8,6 @@
 
 <h:head>
 	<link rel="stylesheet" type="text/css" href="estilo/jpautocenter.css" />
-	
 </h:head>
 
 <h:body styleClass="main">
@@ -17,12 +16,16 @@
 	</ui:insert>
 
 	<div id="container">
-
-		<div id="mainnav">
-			<h:form>
-				<p:menu model="#{menuBean.model}"  />
-			</h:form>
-		</div>
+	
+	
+	
+	<h:form id="formMenuAdm" styleClass="MenuLateral">
+		<p:commandButton id="dynaButton" type="button" icon="resoucer"/>
+		<h:panelGrid columns="1">
+			<p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom" model="#{menuBean.model}" styleClass="MenuLateralSub"/>
+		</h:panelGrid>
+	</h:form>
+		
 		<div id="content" align="left">
 			<h2>
 				<ui:insert name="pageTitle" />
