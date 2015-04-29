@@ -3,8 +3,10 @@ package resources.dao;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import resources.entity.Cliente;
+import resources.entity.Modelo;
 import resources.entity.Servico;
 
 public class ServicoDAO extends AbstractDAO<Servico> {
@@ -16,8 +18,10 @@ public class ServicoDAO extends AbstractDAO<Servico> {
 
 	@Override
 	public List<Servico> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = em.createQuery("Select p from Servico p", Servico.class);
+		@SuppressWarnings("unchecked")
+		List<Servico> servico = q.getResultList();
+		return servico;
 	}
 
 	@Override

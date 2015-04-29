@@ -20,9 +20,14 @@
 			
 			<h:outputLabel styleClass="campo1" value=" Valor:" />
 			<h:inputText styleClass="inpt01" value="#{mb.servico.vlUnitario}">
-				<f:convertNumber pattern="#,##0.00"></f:convertNumber>  
+				   
 			</h:inputText>
 			
+				<h:outputLabel styleClass="campo1" value="Marca "/>
+				<h:selectOneMenu  id="comboServico"  items="#{mb.servicos}" converter="selectItensMenu" styleClass="slct">
+					<f:selectItems  value="#{mb.servicos}" var="servicos" itemLabel="#{servicos.descricao}" itemValue="#{servicos}" />
+				</h:selectOneMenu>
+				
 			<h:commandButton value="Cadastrar" action="#{mb.cadastrar(servicoBean.servico)}" styleClass="btn01" />
 		</h:panelGrid>
 	</h:form>

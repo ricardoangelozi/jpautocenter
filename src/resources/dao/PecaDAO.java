@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityTransaction;
 
+import resources.entity.Cidade;
 import resources.entity.Peca;
 
 public class PecaDAO extends AbstractDAO<Peca> {
@@ -15,8 +16,10 @@ public class PecaDAO extends AbstractDAO<Peca> {
 
 	@Override
 	public List<Peca> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		javax.persistence.Query q = em.createQuery("Select a from Peca a", Peca.class);
+		@SuppressWarnings("unchecked")
+		List<Peca> peca = q.getResultList();
+		return peca;
 	}
 
 	@Override

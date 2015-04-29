@@ -92,14 +92,68 @@
 					<f:selectItems value="#{mb.anos}"/>
 				</h:selectOneMenu>
 				
+				
+				 
 			</h:panelGrid>
 			
-			<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" styleClass="btn01"/>
+			<h:panelGrid rendered="#{mb.exibir}">
+				
+				<p:dataTable var="car" value="#{mb.itens}" emptyMessage="Insira Serviços ou Peças">
+				    <p:column headerText="Descrição">
+				        <h:outputText value="#{car.descricao}" />
+				    </p:column>
 			
-			<p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /> 
+				<p:column headerText="Valor Unidade ">
+				        <h:outputText value="#{car.valor}" />
+				    </p:column>
+				</p:dataTable>
+				
+				<h:commandButton value="Cadastrar" action="#{mb.cadastrar}" styleClass="btn01"/>
 			
-			<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" closeOnEscape="true" hideEffect="bounce" height="200">
-    			<h:outputText value="This dialog has nice effects." />
+				<p:commandButton value="Serviços" type="button" onclick="PF('dlg3').show();" />
+				
+			</h:panelGrid>
+			
+			 
+			
+			<p:dialog header="Cadastrar Serviços Executados" modal="true" widgetVar="dlg3"  showEffect="explode" closeOnEscape="true"   width="650" height="200">
+				
+				<h:panelGrid columns="3">
+					
+					<h:outputLabel styleClass="campo1" value="Serviços "/>
+					
+					<h:selectOneMenu  id="comboServico" value="#{mb.servico}"  items="#{mb.servicos}" converter="selectItensMenu" styleClass="slct">
+						<f:selectItem noSelectionOption="true" itemLabel="SELECIONE..."></f:selectItem>
+						<f:selectItems  value="#{mb.servicos}" var="servicos" itemLabel="#{servicos.descricao}" itemValue="#{servicos}" />
+					</h:selectOneMenu>
+					
+					<h:commandButton value="Add Servico" action="#{mb.adicionarServico}" styleClass="btn01"/>
+					
+					<h:outputLabel styleClass="campo1" value="Peças "/>
+					
+					<h:selectOneMenu  id="comboPecas" value="#{mb.peca}"  items="#{mb.pecas}" converter="selectItensMenu" styleClass="slct">
+						<f:selectItem noSelectionOption="true" itemLabel="SELECIONE..."></f:selectItem>
+						<f:selectItems  value="#{mb.pecas}" var="pecas" itemLabel="#{pecas.descricao}" itemValue="#{pecas}" />
+					</h:selectOneMenu>
+					
+					<h:commandButton value="Add Pecas" action="#{mb.adicionarPecas}" styleClass="btn01"/>
+				</h:panelGrid>
+				
+				
+				<p:dataTable var="car" value="#{mb.itens}" emptyMessage="Ops">
+				    <p:column headerText="Descrição">
+				        <h:outputText value="#{car.descricao}" />
+				    </p:column>
+				 
+				    <p:column headerText="Valor Unidade ">
+				        <h:outputText value="#{car.valor}" />
+				    </p:column>
+				    
+				    <p:column footerText="teste">
+				    	<h:outputText value="#{mb.valorTotal}"></h:outputText>
+				    </p:column>
+				</p:dataTable>
+				
 			</p:dialog>
 			
 		</h:form>

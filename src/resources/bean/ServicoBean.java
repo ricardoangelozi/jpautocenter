@@ -1,6 +1,7 @@
 package resources.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,7 +16,10 @@ public class ServicoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	Servico servico = new Servico();
+	
 	ServicoDAO dao = new ServicoDAO();
+	
+	private List<Servico> servicos;
 	
 	
 
@@ -24,6 +28,13 @@ public class ServicoBean implements Serializable {
 	
 	public void cadastrar(Servico servico){
 		dao.incluir(servico);
+	}
+	
+	public List<Servico> getServicos(){
+		if(this.servicos == null){
+			servicos = dao.listar();
+		}
+		return servicos;
 	}
 
 	public Servico getServico() {
