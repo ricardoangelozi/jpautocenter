@@ -32,7 +32,7 @@ public class Peca implements Serializable {
 	private String descricao;
 
 	@Column(name = "VL_UNITARIO")
-	private Long vlUnitario;
+	private Double vlUnitario;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_PC_CATEGORIA")
@@ -54,11 +54,11 @@ public class Peca implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Long getVlUnitario() {
+	public Double getVlUnitario() {
 		return vlUnitario;
 	}
 
-	public void setVlUnitario(Long vlUnitario) {
+	public void setVlUnitario(Double vlUnitario) {
 		this.vlUnitario = vlUnitario;
 	}
 

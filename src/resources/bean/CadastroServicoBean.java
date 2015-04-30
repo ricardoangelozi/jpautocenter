@@ -15,13 +15,18 @@ import resources.dao.CidadeDAO;
 import resources.dao.MarcaDAO;
 import resources.dao.ModeloDAO;
 import resources.dao.ParceirosDAO;
+import resources.dao.PecaDAO;
+import resources.dao.ServicoDAO;
 import resources.dao.VeiculoDAO;
 import resources.entity.Cidade;
 import resources.entity.Marca;
 import resources.entity.Modelo;
 import resources.entity.Parceiro;
+import resources.entity.Peca;
+import resources.entity.Servico;
 import resources.entity.Veiculo;
 import resources.utils.Utils;
+import resources.vo.ItensServicos;
 
 @ManagedBean(name = "cadastroServicoBean")
 @ViewScoped
@@ -44,12 +49,22 @@ public class CadastroServicoBean implements Serializable {
 	MarcaDAO marcaDao = new MarcaDAO();
 	VeiculoDAO veiculoDao = new VeiculoDAO();
 	CidadeDAO cidadeDao = new CidadeDAO();
+	ServicoDAO servicoDao = new ServicoDAO();
+	PecaDAO pecaDao = new PecaDAO();
 	
 	private Veiculo veiculo = new Veiculo();
+	private Servico servico = new Servico();
+	private Peca peca = new Peca();
+	Double valorTotal = new Double(0);
 	
+	
+	
+	private List<ItensServicos> itens = new ArrayList<ItensServicos>();
 	private List<Cidade> cidades;
 	private List<Modelo> modelos;
 	private List<Marca> marcas;
+	private List<Servico> servicos;
+	private List<Peca> pecas;
 	
 	public void cadastrar(){
 		
@@ -63,10 +78,36 @@ public class CadastroServicoBean implements Serializable {
 		}
 	}
 	
-	public void carregarModelo(){
-		System.out.println("teste");
+	
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+
+	public void adicionarServico(){
+		ItensServicos iten = new ItensServicos();
+		iten.setDescricao(servico.getDescricao());
+		iten.setValor(servico.getVlUnitario());
+		
+		this.itens.add(iten);
+		
+		for (ItensServicos lista : itens) {
+			valorTotal = valorTotal + lista.getValor();
+		}
 	}
 	
+	public void adicionarPecas(){
+		
+		ItensServicos itens = new ItensServicos();
+			itens.setDescricao(peca.getDescricao());
+			itens.setValor(peca.getVlUnitario());
+		this.itens.add(itens);
+	}
 	
 	
 	public void mensagens(String campo){
@@ -85,6 +126,13 @@ public class CadastroServicoBean implements Serializable {
 			FacesMessage.SEVERITY_WARN,null,"Preencha o Campo Placa"));
 		}
 		
+	}
+	
+	public List<Peca> getPecas(){
+		if(pecas == null){
+			return	pecas = pecaDao.listar();
+		}
+		return pecas;
 	}
 	
 	public List<Cidade> getCidades(){
@@ -128,6 +176,13 @@ public class CadastroServicoBean implements Serializable {
 			itens.add(new SelectItem(i,i.toString()));
 		}
 		return itens;
+	}
+	
+	public List<Servico> getServicos(){
+		if(this.servicos == null){
+			servicos = servicoDao.listar();
+		}
+		return servicos;
 	}
 	
 //	public List<SelectItem> getCidades(){
@@ -226,4 +281,40 @@ public Boolean validacoesCampos(){
 	public void setExibir(Boolean exibir) {
 		this.exibir = exibir;
 	}
+
+
+	public Servico getServico() {
+		return servico;
+	}
+
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
+	}
+
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+	
+	public List<ItensServicos> getItens() {
+		return itens;
+	}
+
+
+	public void setItens(List<ItensServicos> itens) {
+		this.itens = itens;
+	}
+
+
+	public Peca getPeca() {
+		return peca;
+	}
+
+
+	public void setPeca(Peca peca) {
+		this.peca = peca;
+	}
+	
+	
 }
