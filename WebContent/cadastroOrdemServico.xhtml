@@ -24,10 +24,11 @@
 				</h:outputLabel>
 			</h:panelGrid>
 			
-			<h:panelGrid columns="3">
+			<h:panelGrid styleClass="campoTable">
 				<h:outputLabel styleClass="campo1" value="Placa: " id="placa"/>
-				<p:inputMask styleClass="campo2P" mask="aaa-9999" maxlength="8" value="#{mb.veiculo.placa}"/>
+				<p:inputMask styleClass="campo2P" mask="aaa-9999" maxlength="8" value="#{mb.veiculo.placa}" />
 				<h:commandButton value="buscar" action="#{mb.buscarCliente()}" styleClass="btn01" />
+				<h:outputLabel />
 			</h:panelGrid>
 			
 			 <h:panelGrid columns="10" rendered="#{mb.exibir}" >
@@ -98,7 +99,7 @@
 			
 			<h:panelGrid rendered="#{mb.exibir}">
 				
-				<p:dataTable var="car" value="#{mb.itens}" emptyMessage="Insira Serviços ou Peças">
+				<p:dataTable var="car" value="#{mb.itens}" emptyMessage="Insira Serviços ou Peças" style="width:100%">
 				    <p:column headerText="Descrição">
 				        <h:outputText value="#{car.descricao}" />
 				    </p:column>
