@@ -27,7 +27,9 @@ html {
 }
 
 table {
-	border-spacing: 0px;
+		border-spacing: 0px;
+	  width: 95%;
+	  margin: 0px auto;
 }
 
 body {
@@ -5430,4 +5432,12 @@ l
 	
 }
 
-.tese{}
+.campoTable{
+	border:1px solid #333;
+}
+
+.campoTable td{
+	border:1px solid #333;
+	float:left;
+	width:auto;
+}
