@@ -78,6 +78,12 @@ public class CadastroServicoBean implements Serializable {
 		}
 	}
 	
+	public String salvar(){
+		for (ItensServicos itens : itens) {
+			System.out.println(itens.getDescricao());
+		}
+		return null;
+	}
 	
 	public Double getValorTotal() {
 		return valorTotal;
